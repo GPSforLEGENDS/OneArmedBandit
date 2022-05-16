@@ -12,7 +12,8 @@ public class BanditGame {
 
     public BanditGame(){
         //TODO zurück machen
-        int perfectPlace = ThreadLocalRandom.current().nextInt(10);
+        //int perfectPlace = ThreadLocalRandom.current().nextInt(10);
+        int perfectPlace = 0;
 
         for(int i = 0; i < BanditUtil.BANDIT_AMOUNT; i++){
             bandits[i] = new Bandit(0);
@@ -35,7 +36,8 @@ public class BanditGame {
         tries = 0;
         totalScore = 0;
         //TODO zurück machen
-        int perfectPlace = ThreadLocalRandom.current().nextInt(10);
+        //int perfectPlace = ThreadLocalRandom.current().nextInt(10);
+        int perfectPlace = 0;
 
         for(int i = 0; i < BanditUtil.BANDIT_AMOUNT; i++){
             bandits[i] = new Bandit(0);
@@ -54,10 +56,14 @@ public class BanditGame {
     }
 
     public GameState buildStateObservation(){
-        double[] scores = new double[BanditUtil.BANDIT_AMOUNT];
+        double[] scores = new double[BanditUtil.BANDIT_AMOUNT*2];
 
         for(int i = 0; i < BanditUtil.BANDIT_AMOUNT; i++){
             scores[i] = bandits[i].getAverageScore();
+        }
+
+        for(int i = BanditUtil.BANDIT_AMOUNT; i < BanditUtil.BANDIT_AMOUNT*2; i++){
+            scores[i] = bandits[i-BanditUtil.BANDIT_AMOUNT].getTotalRolls();
         }
 
         return new GameState(scores);

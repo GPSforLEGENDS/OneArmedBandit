@@ -29,4 +29,8 @@ public class Bandit {
         }
         return totalScore / totalRolls;
     }
+
+    public int getTotalRolls(){
+        return totalRolls;
+    }
 }

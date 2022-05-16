@@ -17,7 +17,7 @@ public class GameObservationSpace implements ObservationSpace<GameState> {
     @Override
     public int[] getShape() {
         return new int[] {
-                1, BanditUtil.BANDIT_AMOUNT
+                1, BanditUtil.BANDIT_AMOUNT*2
         };
     }
 
@@ -32,8 +32,8 @@ public class GameObservationSpace implements ObservationSpace<GameState> {
     }
 
     private static double[] createValueArray(final double value) {
-        final double[] values = new double[BanditUtil.BANDIT_AMOUNT];
-        for (int i = 0; i < BanditUtil.BANDIT_AMOUNT; i++) {
+        final double[] values = new double[BanditUtil.BANDIT_AMOUNT*2];
+        for (int i = 0; i < BanditUtil.BANDIT_AMOUNT*2; i++) {
             values[i] = value;
         }
 

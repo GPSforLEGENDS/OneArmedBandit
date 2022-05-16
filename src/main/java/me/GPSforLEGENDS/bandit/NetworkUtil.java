@@ -18,8 +18,8 @@ public class NetworkUtil {
                 .maxStep(15000)
                 .expRepMaxSize(150000)
                 .batchSize(128)
-                .targetDqnUpdateFreq(300)
-                .updateStart(10)
+                .targetDqnUpdateFreq(100)
+                .updateStart(100)
                 .rewardFactor(0.01)
                 .gamma(0.99)
                 .errorClamp(1.0)
@@ -31,8 +31,8 @@ public class NetworkUtil {
 
     public static DQNFactoryStdDense buildDQNFactory() {
         final DQNDenseNetworkConfiguration build = DQNDenseNetworkConfiguration.builder()
-                .updater(new RmsProp(0.000025))
-                .numHiddenNodes(20)
+                .updater(new RmsProp(0.0025))
+                .numHiddenNodes(100)
                 .numLayers(2)
                 .build();
 
