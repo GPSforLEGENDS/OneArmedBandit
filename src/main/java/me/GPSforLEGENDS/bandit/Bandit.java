@@ -17,7 +17,8 @@ public class Bandit {
     }
 
     public double reward(){
-        double score = (ThreadLocalRandom.current().nextInt(100) + 1) * mult;
+        double score = (ThreadLocalRandom.current().nextInt(100) + 100) * mult;
+        score -= 100;
         totalScore += score;
         totalRolls++;
         return score;
@@ -28,5 +29,13 @@ public class Bandit {
             return 0;
         }
         return totalScore / totalRolls;
+    }
+
+    public double getTotalScore(){
+        return totalScore;
+    }
+
+    public int getTotalRolls(){
+        return totalRolls;
     }
 }
